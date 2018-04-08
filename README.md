@@ -29,10 +29,10 @@ Features:
 ----------------------
 Technologies Involved:
 ----------------------
-  ###Front-End(Client side):
+  ##### Front-End(Client side):
   1. HTTP5
   2. JavaScript
   3. CSS
-  ###Back-End(Server side):
+  ##### Back-End(Server side):
   1. Node.js with authentication
   
