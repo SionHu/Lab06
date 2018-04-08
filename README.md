@@ -9,7 +9,7 @@ Team Members:
 
   - Xiao Hu	hu440@purdue.edu
   - Haobo Wang	wang2940@purdue.edu
-  - Yawen Chu   
+  - Yawen Chu   chu110@purdue.edu
 
 ------------
 Description:
