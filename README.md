@@ -25,6 +25,7 @@ Features:
     - [] Price Range
     - [] Room Number
   2. Showing all the spots of residences on the Google Map
+  3. Find roomate: Find roomates and set up communication with other people who consider the same housing but have not enough to live with.
     
 ----------------------
 Technologies Involved:
