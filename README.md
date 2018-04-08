@@ -20,17 +20,19 @@ Description:
 Features:
 ---------
   1. Filters:
-    - *Using three-point fix to locate and list the rank of distances of available residences.
-    - Renting Period
-    - Price Range
-    - Room Number
+    - [] *Using three-point fix to locate and list the rank of distances of available residences.
+    - [] Renting Period
+    - [] Price Range
+    - [] Room Number
   2. Showing all the spots of residences on the Google Map
     
 ----------------------
 Technologies Involved:
 ----------------------
+  ###Front-End(Client side):
   1. HTTP5
   2. JavaScript
   3. CSS
-  
+  ###Back-End(Server side):
+  1. Node.js with authentication
   
