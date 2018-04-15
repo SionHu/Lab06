@@ -35,5 +35,5 @@ Technologies Involved:
   2. JavaScript
   3. CSS
   ##### Back-End(Server side):
-  1. Node.js with authentication
+  1. Node.js and Express
   
