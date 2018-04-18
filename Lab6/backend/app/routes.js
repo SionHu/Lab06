@@ -14,7 +14,7 @@ module.exports = function(app, passport) {
 	// =====================================
     // ACCOUNT (with login links) ==========
     // =====================================
-	app.get('/account', function(req,res){
+	app.get('/account', canEnter, function(req,res){
 		res.render('account.ejs'); // load the account.ejs file
 	});
 	
@@ -22,11 +22,11 @@ module.exports = function(app, passport) {
     // LOGIN ===============================
     // =====================================
     // show the login form
-    app.get('/login', function(req, res) {
+    
+	app.get('/login', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('login.ejs', { message: req.flash('loginMessage') }); 
     });
-
     // process the login form
     // app.post('/login', do all our passport stuff here);
 
@@ -95,4 +95,11 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
 	console.log("no auth");
     res.redirect('/login');
+}
+
+function canEnter(req, res, next) {
+	if(req.isAuthenticated())
+		res.redirect('/profile');
+	else
+		return next();
 }
