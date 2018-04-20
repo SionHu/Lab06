@@ -33,7 +33,6 @@ Team Member:
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li><a href="index.html">Home</a></li>
-            
           <li class="active"><a href="profile.html">Profile</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a class="drop" href="#">Dropdown</a>
@@ -87,12 +86,15 @@ Team Member:
             <img src="images/avatar.png" alt="Avatar" class="avatar">
           </div>
           <div id="accout_info" class="card">
-            <h2>About Me</h2>
-            <p>First Name</p>
-            <p>Last Name</p>
-            <p>Phone Number</p>
-            <p>Email Address</p>
-            <p>Bio</p>
+            <form action="/profile" method="post">
+              <h2>About Me</h2>
+              Email Address: <input type="text" name="email" value="default" readonly><br>
+              First Name: <input type="text" name="fname" required><br>
+              Last Name: <input type="text" name="lname" required><br>
+              Phone Number: <input type="text" name="phone" required><br>
+              Bio: <textarea name="bio" rows = "5" cols = "50" class="overflow">Your Bio here</textarea><br>
+              <button type="submit" class="btn">Update</button>
+            </form>
           </div>
       </div>
       
