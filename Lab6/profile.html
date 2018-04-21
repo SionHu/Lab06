@@ -108,12 +108,10 @@ Team Member:
         <!-- Tab content -->
         <div id="Renting_History" class="tabcontent">
           <h3>Renting History</h3>
-          <p>No renting history to be shown. </p>
         </div>
 
         <div id="Leaseing_History" class="tabcontent">
           <h3>Leaseing History</h3>
-          <p>No leasing history to be shown.</p> 
         </div>
     </div>
     </article>
@@ -152,8 +150,22 @@ Team Member:
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script>
+    //document.getElementById('login_page').style.display='none';
+    
+    var name1 = "hey";
+    var name2 = "fasdfads";
+    var link1 = "http://www.google.com";
+    var link2 = "http://www.yahoo.com";
+    
+    // for renting history tab
+    var renting_div = document.getElementById("Renting_History");
+    //"<a href='http://dictionary.reference.com/browse/"+wordlist[i]+"' target='_blank'>"+wordlist[i]+"</a>"
+    renting_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a>";
+    renting_div.innerHTML += "<li><a href="+link2+ "' target='_blank'>"+name2+"</a><br>";
 
-    document.getElementById('login_page').style.display='none';
+    // for leasing history tab
+    var leasing_div = document.getElementById("Leaseing_History")
+    leasing_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a><br>";
 
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
@@ -167,6 +179,7 @@ Team Member:
       }
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.className += " active";
+
     }
 
  
