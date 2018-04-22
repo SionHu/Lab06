@@ -1,3 +1,4 @@
+<!-- views/index.ejs -->
 <!DOCTYPE html>
 <!--
 Template Name: Funzi
@@ -32,10 +33,10 @@ Team Member:
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="post.html">Post</a></li>
-          <li class="active"><a href="profile.html">Profile</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="/index">Home</a></li>
+          <li class="active"><a href="/post">Post</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/login">Login</a></li>
           <li><a class="drop" href="#">Dropdown</a>
             <ul>
               <li><a href="#">Level 2</a></li>
@@ -81,40 +82,23 @@ Team Member:
     <!-- ################################################################################################ -->
     <article class="group">
       <div class="one_half first">
-          <!-- If user already login, then show user info -->
-          <div id='_avatar' >
-            <h6 class="heading">Account Information</h6>
-            <img src="images/avatar.png" alt="Avatar" class="avatar">
-          </div>
+        <h6 class="heading">How to lease an apartment in your area:</h6>
+        <p>Fill in the form and hit submit. We will help you create your own leasing information and find the best matching redisent.</p>
+        <form action="/post" method="post">
           <div id="accout_info" class="card">
-            <form action="/profile" method="post">
-              <h2>About Me</h2>
-              Email Address: <input type="text" name="email" value="default" readonly><br>
-              First Name: <input type="text" name="fname" required><br>
-              Last Name: <input type="text" name="lname" required><br>
-              Phone Number: <input type="text" name="phone" required><br>
-              Bio: <textarea name="bio" rows = "5" cols = "50" class="overflow">Your Bio here</textarea><br>
-              <button type="submit" class="btn">Update</button>
-            </form>
+            <h2>Leasing Information</h2>
+            Address: <input type="text" name="address" required><br>
+            First Name: <input type="text" name="fname" required><br>
+            Last Name: <input type="text" name="lname" required><br>
+            Contact Email: <input type="text" name="email" required><br>
+            Contact Phone Number: <input type="text" name="phone" required><br>
+            Housing Info: <textarea name="bio" rows = "5" cols = "50" class="overflow"></textarea><br>
           </div>
+          <br>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        
       </div>
-      
-<!--!!!!!!!!!!!!!!!!!-->
-      <!-- Tab links -->
-      <div class="one_half" id="tab_links">
-        <div class="tab">
-          <button class="tablinks" onclick="openTab(event, 'Renting_History')">Renting History</button>
-          <button class="tablinks" onclick="openTab(event, 'Leaseing_History')">Leasing History</button>
-        </div>
-        <!-- Tab content -->
-        <div id="Renting_History" class="tabcontent">
-          <h3>Renting History</h3>
-        </div>
-
-        <div id="Leaseing_History" class="tabcontent">
-          <h3>Leaseing History</h3>
-        </div>
-    </div>
     </article>
     <!-- ################################################################################################ -->
     <!-- / main body -->
@@ -123,13 +107,11 @@ Team Member:
 </div>
 <!-- ################################################################################################ -->
 
-
-
 <!-- ################################################################################################ -->
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
     <!-- ################################################################################################ -->
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <a>写点什么好呢我也不知道啊那就先写在这里空着吧总感觉没有这一行的话显得不是很高端</a>
     <!-- ################################################################################################ -->
   </footer>
 </div>
@@ -149,41 +131,7 @@ Team Member:
 
 <!-- JAVASCRIPTS -->
 <script src="layout/scripts/jquery.min.js"></script>
+
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
-<script>
-    //document.getElementById('login_page').style.display='none';
-    
-    var name1 = "hey";
-    var name2 = "fasdfads";
-    var link1 = "http://www.google.com";
-    var link2 = "http://www.yahoo.com";
-    
-    // for renting history tab
-    var renting_div = document.getElementById("Renting_History");
-    //"<a href='http://dictionary.reference.com/browse/"+wordlist[i]+"' target='_blank'>"+wordlist[i]+"</a>"
-    renting_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a>";
-    renting_div.innerHTML += "<li><a href="+link2+ "' target='_blank'>"+name2+"</a><br>";
-
-    // for leasing history tab
-    var leasing_div = document.getElementById("Leaseing_History")
-    leasing_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a><br>";
-
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
-
-    }
-
- 
-</script>
 </body>
 </html>

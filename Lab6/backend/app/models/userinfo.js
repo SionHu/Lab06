@@ -2,12 +2,11 @@ var mongoose = require('mongoose');
 
 
 var userinfoSchema = mongoose.Schema({
-	local			: {
 		email		 : String,
 		fname	 	 : String,
 		lname	 	 : String,
-		phoneno		 : String
-	}
+		phoneno		 : String,
+		bio			 : String
 	
 });
 
