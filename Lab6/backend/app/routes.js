@@ -1,7 +1,11 @@
 // app/routes.js
 module.exports = function(app, passport) {
 	var favicon = require('serve-favicon');
+    var multer = require('multer'); 
+    var fs = require('fs');
+
 	app.use(favicon('favicon.ico'));
+    app.use(multer({ dest: '/tmp/'}).array('image'));
     //our user information
 	var userInfo = require('./models/userinfo');
     //our post information(foreigin key email)
@@ -59,30 +63,87 @@ module.exports = function(app, passport) {
                         'phoneno' : "",
                         'bio'     : "Hey"
         };
-        userInfo.findOne({'email' : req.user.local.email}, function(err, userin, next){
+
+        var postinfo;
+
+        userInfo.findOne({'email' : req.user.local.email}, function(err, userin){
             if(err) return handleError(err);
             if(!userin) {
+
                 console.log("no info yet");
+                postInfo.find({'email' : req.user.local.email}, function(err, postin){
+                    if(err) return handleError(err);
+                    if(!postin) {
+                        postinfo = postin;
+                        console.log("no post yet");
                 res.render('profile.ejs', {
                 user : req.user,
-                userinfo : userinfo
-            // get the user out of session and pass to template
-            //check if there is a userinfo in the db
+                userinfo : userinfo,
+                pinfo : postin,
+                hp : false
+                // get the user out of session and pass to template
+                //check if there is a userinfo in the db
                 });
+                    }
+                    else{
+                        console.log('there is post history');
+                 //       console.log(postin);
+                        postinfo = postin;
+                        res.render('profile.ejs', {
+                        user : req.user,
+                        userinfo : userinfo,
+                        pinfo : postinfo,
+                        hp : true
+                    // get the user out of session and pass to template
+                    //check if there is a userinfo in the db
+                        });
+                }
+            });
             }
             else {
-                console.log('find info');
-                console.log(userin.bio);
+                postInfo.find({'email' : req.user.local.email}, function(err, postin){
+                    if(err) return handleError(err);
+                    if(!postin) {
+                        postinfo = postin;
+                        console.log("no post yet");
+                        console.log('find info');
+                //console.log(userin.bio);
                 userinfo.fname = userin.fname;
                 userinfo.lname = userin.lname;
                 userinfo.phoneno = userin.phoneno;
                 userinfo.bio = userin.bio;
                 res.render('profile.ejs', {
                 user : req.user,
-                userinfo : userinfo
+                userinfo : userinfo,
+                pinfo : postin,
+                hp : false
                 // get the user out of session and pass to template
                 //check if there is a userinfo in the db
                 });
+                    }
+                    else{
+                        console.log('there is post history');
+                        //console.log(postin);
+                        postinfo = postin;
+                        console.log('find info');
+                //console.log(userin.bio);
+                userinfo.fname = userin.fname;
+                userinfo.lname = userin.lname;
+                userinfo.phoneno = userin.phoneno;
+                userinfo.bio = userin.bio;
+                res.render('profile.ejs', {
+                user : req.user,
+                userinfo : userinfo,
+                pinfo : postinfo,
+                hp : true
+                // get the user out of session and pass to template
+                //check if there is a userinfo in the db
+                });
+                    }
+                });
+                
+                
+
             } 
         });
 
@@ -125,22 +186,79 @@ module.exports = function(app, passport) {
             }
         });
 
-        res.render('profile.ejs' , {
+
+
+        postInfo.find({email : req.user.local.email}, function(err, postin){
+            if(err) return handleError(err);
+            res.render('profile.ejs' , {
             user : req.user,
             //check to see if there is anything to and update
-            userinfo : userinfo
-        });
+            userinfo : userinfo,
+            hp : false,
+            pinfo : postin
+            });
+
+        }); 
+
+
+
+        
     });
 
 
 	//get the request of creating a renting post
     app.get('/post', isLoggedIn, function(req, res) {
-        res.render('post.ejs');
+        res.render('post.ejs', {
+            user : req.user
+        });
     });
 
     //after finish the post. We can find up the new post update in our history list 
     app.post('/post', isLoggedIn, function(req, res){
-        res.render('post.ejs');
+        //first we need to store the picture in our own server and pass the name to our db
+       // console.log(req.files[0]);
+        var des_file = __dirname + "/../public/images/" + req.files[0].originalname;
+        fs.readFile(req.files[0].path, function(err, data){
+            fs.writeFile(des_file, data, function(err, data){
+                if(err){
+                    console.log(err);
+                } 
+                else{
+                    console.log('file store in folder successfully');
+                }
+
+            });
+        });
+
+        var posti = new postInfo();
+        console.log(req.user.local.email);
+        var postinfo = {'address' : req.body.address,
+                        'url' : req.files[0].originalname,                         
+                        'fname' : req.body.fname,
+                        'lname' : req.body.lname,
+                        'phoneno' : req.body.phoneno,
+                        'email' : req.body.email,
+                        'hinfo' : req.body.hbio
+         }; 
+
+        posti.address = postinfo.address;
+        posti.url = postinfo.url;
+        posti.fname = postinfo.fname;
+        posti.lname = postinfo.lname;
+        posti.phoneno = postinfo.phoneno;
+        posti.email = postinfo.email;
+        posti.hinfo = postinfo.hinfo;
+        console.log(postinfo);
+        posti.save(function(err){
+            if(err)
+                throw err;
+            else
+                console.log('store post info in db successfully');
+        })
+
+        res.render('post.ejs', {
+            user : req.user
+        });
     });
 
 	// process the signup form
@@ -166,11 +284,6 @@ module.exports = function(app, passport) {
     });
 };
 	 
-	 
-function suserinfo(req, res) {
-	console.log(req.body.fname);
-	console.log(req.body.lname);
-}
 	 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

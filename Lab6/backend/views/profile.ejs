@@ -29,11 +29,11 @@ Team Member:
     <header id="header" class="hoc clear"> 
       <!-- ################################################################################################ -->
       <div id="logo" class="fl_left">
-        <h1><a href="/index">Funzi</a></h1>
+        <h1><a href="/">Funzi</a></h1>
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li><a href="/index">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/post">Post</a></li>
           <li class="active"><a href="/profile">Profile</a></li>
           <li><a href="/login">Login</a></li>
@@ -157,17 +157,30 @@ Team Member:
     var name1 = "hey";
     var name2 = "fasdfads";
     var link1 = "http://www.google.com";
-    var link2 = "http://www.yahoo.com";
+    var link2 = "http://www.yahoo.com";  
     
     // for renting history tab
     var renting_div = document.getElementById("Renting_History");
     //"<a href='http://dictionary.reference.com/browse/"+wordlist[i]+"' target='_blank'>"+wordlist[i]+"</a>"
-    renting_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a>";
-    renting_div.innerHTML += "<li><a href="+link2+ "' target='_blank'>"+name2+"</a><br>";
+    
+    renting_div.innerHTML += "<li><a href="+link1+ " target='_blank'>"+name1+"</a>";
+    renting_div.innerHTML += "<li><a href="+link2+ " target='_blank'>"+name2+"</a><br>";
 
     // for leasing history tab
     var leasing_div = document.getElementById("Leaseing_History")
-    leasing_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a><br>";
+    //leasing_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a><br>";
+
+
+    var hp = "<%= hp %>";
+
+    if(hp){
+
+     <% pinfo.forEach(function(pif){ %>
+          leasing_div.innerHTML += "<li><a href="+"/housing"+ " target='_blank'><%= pif.address %></a><br>";
+     <%  }); %>
+    }
+    
+
 
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
