@@ -3,6 +3,7 @@ module.exports = function(app, passport) {
 	var favicon = require('serve-favicon');
     var multer = require('multer'); 
     var fs = require('fs');
+    var c = 0;
 
 	app.use(favicon('favicon.ico'));
     app.use(multer({ dest: '/tmp/'}).array('image'));
@@ -248,12 +249,18 @@ module.exports = function(app, passport) {
         posti.phoneno = postinfo.phoneno;
         posti.email = postinfo.email;
         posti.hinfo = postinfo.hinfo;
+        posti.count = c;
+
+
         console.log(postinfo);
         posti.save(function(err){
-            if(err)
+            if(err){
                 throw err;
-            else
+            }
+            else{
                 console.log('store post info in db successfully');
+                c = c + 1;
+            }
         })
 
         res.render('post.ejs', {
@@ -282,9 +289,16 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    //get housing info
+    app.get('/housing', function(req,res){
+        console.log('enter info');
+    });
+
 };
 	 
 	 
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on 
