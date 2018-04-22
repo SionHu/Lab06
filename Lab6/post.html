@@ -83,9 +83,11 @@ Team Member:
       <div class="one_half first">
         <h6 class="heading">How to lease an apartment in your area:</h6>
         <p>Fill in the form and hit submit. We will help you create your own leasing information and find the best matching redisent.</p>
-        <form action="/post" method="post">
+        <form action="/post" method="post" enctype="multipart/form-data">
           <div id="accout_info" class="card">
             <h2>Leasing Information</h2>
+            <p>Select Image to Upload:</p>
+            <input type="file" name="image" size="50" accept="image/*"><br>
             Address: <input type="text" name="address" required><br>
             First Name: <input type="text" name="fname" required><br>
             Last Name: <input type="text" name="lname" required><br>
