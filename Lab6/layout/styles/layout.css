@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-Template Name: Miresa
+Template Name: Funzi
 File: Layout CSS
 */
 
@@ -273,8 +273,6 @@ input:focus, textarea:focus, *:required:focus{border-color:#CF9C67;}
 #backtotop{color:#FFFFFF; background-color:#CF9C67;}
 
 
-
-
 /* ------------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -497,3 +495,88 @@ span.psw {
 input:read-only { background: lightgray; }
 
 
+
+
+/* style.css */
+
+/*
+ * Theme: PG
+ * Author: Pradeep [IT Hands Team]
+ * Date: 01/09/2014
+ */
+ 
+/* -- Google Fonts -- */ 
+@import url(//fonts.googleapis.com/css?family=Roboto:400,700,500); /* -- Roboto -- */
+@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,700); /* -- Roboto Condensed -- */
+
+/* -- Mid Section CSS -- */
+		
+	.bg-grey-dark,
+	.bg-grey,
+	.bg-white {
+		padding:15px 0px;
+		float:left;
+		width:100%;
+		}
+		
+	.bg-grey-dark {
+		background:#d9d9d9;
+		font:bold 20px/100% 'Roboto Condensed';
+		color:#686868;
+		text-align:center;
+		padding:18px 0px 20px 0px;
+		}
+		
+	.bg-grey,
+	.bg-white {
+		font:normal 24px/100% 'Roboto Condensed';
+		color:#484848;
+		text-align:left;
+		}
+		
+	.bg-grey {
+		background-color:#F2F2F2;
+		}
+
+	.bg-white {
+		background:#fff;
+		}
+		
+		.bg-grey span,
+		.bg-white span {
+			font:normal 16px/100% Arial, Helvetica, sans-serif;
+			color:#bbbbbb;
+			font-weight:600;
+			text-transform:lowercase;
+			}
+			
+		.bg-grey .price-block h2 span, 
+		.bg-white .price-block h2 span {
+			text-transform:capitalize;
+			}
+			
+		.bg-grey span.mobile-text,
+		.bg-white span.mobile-text {
+			color:#bcbbbb;
+			font-size:16px;
+			display:none;
+			}
+			
+		.bg-grey a,
+		.bg-white a {
+			font-weight:bold;
+			color:#484848;
+			text-decoration:none;
+			line-height:100%;
+			}
+			
+		.bg-grey a:hover,
+		.bg-white a:hover {
+			border-bottom:1px solid #484848;
+			text-decoration:none;
+			}
+			
+#myimage {
+    width: 400px;
+    height: 300px;
+}
