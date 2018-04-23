@@ -489,7 +489,11 @@ span.psw {
     to {transform: scale(1)}
 }
 
+/* Account Information Page*/
+.overflow{
+    overflow: scroll;
+}
 
-
+input:read-only { background: lightgray; }
 
 

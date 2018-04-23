@@ -1,10 +1,10 @@
-<!-- views/profile.ejs -->
+<!-- views/index.ejs -->
 <!DOCTYPE html>
 <!--
 Template Name: Funzi
 Team Member:
-  - Xiao Hu	    hu440@purdue.edu
-  - Haobo Wang	wang2940@purdue.edu
+  - Xiao Hu     hu440@purdue.edu
+  - Haobo Wang  wang2940@purdue.edu
   - Yawen Chu   chu110@purdue.edu
 -->
 <html lang="en">
@@ -34,9 +34,9 @@ Team Member:
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li><a href="/">Home</a></li>
-            
+          <li><a href="/post">Post</a></li>
           <li class="active"><a href="/profile">Profile</a></li>
-          <li><a href="/profile">Login</a></li>
+          <li><a href="/login">Login</a></li>
           <li><a class="drop" href="#">Dropdown</a>
             <ul>
               <li><a href="#">Level 2</a></li>
@@ -88,11 +88,15 @@ Team Member:
             <img src="images/avatar.png" alt="Avatar" class="avatar">
           </div>
           <div id="accout_info" class="card">
-            <h2>About Me</h2>
-            <p>
-			<strong>Email</strong>: <%= user.local.email %><br>
-            <strong>Password</strong>: <%= user.local.password %>
-			</p>
+            <form action="/profile" method="post">
+              <h2>About Me</h2>
+              Email Address: <input type="text" name="email" value = <%= user.local.email %> readonly> <br>
+              First Name: <input type="text" name="fname" value = <%= userinfo.fname %> required><br>
+              Last Name: <input type="text" name="lname" value = <%= userinfo.lname %> required><br>
+              Phone Number: <input type="text" name="phoneno" value = <%= userinfo.phoneno %> required><br>
+              Bio: <textarea name="bio" rows = "5" cols = "50" class="overflow"><%= userinfo.bio %></textarea><br>
+              <button type="submit" class="btn">Update</button>
+            </form>
           </div>
       </div>
       
@@ -106,12 +110,10 @@ Team Member:
         <!-- Tab content -->
         <div id="Renting_History" class="tabcontent">
           <h3>Renting History</h3>
-          <p>No renting history to be shown. </p>
         </div>
 
         <div id="Leaseing_History" class="tabcontent">
           <h3>Leaseing History</h3>
-          <p>No leasing history to be shown.</p> 
         </div>
     </div>
     </article>
@@ -119,7 +121,6 @@ Team Member:
     <!-- / main body -->
     <div class="clear"></div>
   </main>
-  
 </div>
 <!-- ################################################################################################ -->
 
@@ -151,8 +152,35 @@ Team Member:
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script>
+    //document.getElementById('login_page').style.display='none';
+    
+    var name1 = "hey";
+    var name2 = "fasdfads";
+    var link1 = "http://www.google.com";
+    var link2 = "http://www.yahoo.com";  
+    
+    // for renting history tab
+    var renting_div = document.getElementById("Renting_History");
+    //"<a href='http://dictionary.reference.com/browse/"+wordlist[i]+"' target='_blank'>"+wordlist[i]+"</a>"
+    
+    renting_div.innerHTML += "<li><a href="+link1+ " target='_blank'>"+name1+"</a>";
+    renting_div.innerHTML += "<li><a href="+link2+ " target='_blank'>"+name2+"</a><br>";
 
-    document.getElementById('login_page').style.display='none';
+    // for leasing history tab
+    var leasing_div = document.getElementById("Leaseing_History")
+    //leasing_div.innerHTML += "<li><a href="+link1+ "' target='_blank'>"+name1+"</a><br>";
+
+
+    var hp = "<%= hp %>";
+
+    if(hp){
+
+     <% pinfo.forEach(function(pif){ %>
+          leasing_div.innerHTML += "<li><a href="+"/housing?postid="+ "<%= pif.count %>"  + "&fname=" + "<%= pif.fname %>" + " target='_blank'><%= pif.address %></a><br>";
+     <%  }); %>
+    }
+    
+
 
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
@@ -166,6 +194,7 @@ Team Member:
       }
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.className += " active";
+
     }
 
  
