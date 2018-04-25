@@ -144,7 +144,6 @@
 
 <!-- ################################################################################################ -->
     <button class="btn" type="button" onclick="myFunction()">Yes, I want it</button>
-    <button class="btn" type="button" onclick="clear()">Clear</button>
     <button class="btn" type="button" onclick="midpoint()">Midpoint</button>
     <button class="btn" type="button" onclick="initMap()">initMap</button>
     <a href="result.html" class="btn">Let's Go!&raquo;</a>
@@ -178,15 +177,11 @@
                 lan[count] = results[0].geometry.location.lat();
                 lon[count] = results[0].geometry.location.lng();
 //                alert("TEST: "+lan[count]+", "+lon[count]+". Count: "+count);
-                document.getElementById("demo").innerHTML = lan;   
-                document.getElementById("demo2").innerHTML = lon;   
+//                document.getElementById("demo").innerHTML = lan;   
+//                document.getElementById("demo2").innerHTML = lon;   
             } 
             }); 
             count+=1;
-        }
-        
-        function clear(){
-            alert("claer!");
         }
         
         function degr2rad(rad) { return rad * Math.PI / 180; }
