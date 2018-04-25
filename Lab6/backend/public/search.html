@@ -109,7 +109,7 @@
     <header id="header" class="hoc clear"> 
       <!-- ################################################################################################ -->
       <div id="logo" class="fl_left">
-        <h1><a href="index.html">Funzi</a></h1>
+        <h1><a href="/Lab6/index.html">Funzi</a></h1>
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
@@ -145,7 +145,7 @@
 <!-- ################################################################################################ -->
     <button class="btn" type="button" onclick="myFunction()">Yes, I want it</button>
     <button class="btn" type="button" onclick="midpoint()">Midpoint</button>
-    <button class="btn" type="button" onclick="initMap()">initMap</button>
+    <button class="btn" type="button" onclick="show_midpoint()">SHOW</button>
     <a href="result.html" class="btn">Let's Go!&raquo;</a>
     
     <p id="demo"></p>
@@ -165,7 +165,7 @@
         
         var map;    //The most important var!!!!
         
-<!-- **************************************************************** -->
+
     
         function myFunction() {
             var x = document.getElementById("pac-input");
@@ -188,7 +188,7 @@
             count+=1;
         }
         
-<!-- **************************************************************** -->
+
     
         function degr2rad(rad) { return rad * Math.PI / 180; }
         function rad2degr(rad) { return rad * 180 / Math.PI; }
@@ -218,8 +218,8 @@
             
             LAT = rad2degr(lat);    LON = rad2degr(lng);
                 
-            document.getElementById("demo3").innerHTML = LAT;   
-            document.getElementById("demo4").innerHTML = LON;   
+            document.getElementById("demo3").innerHTML = "LAT: "+LAT;   
+            document.getElementById("demo4").innerHTML = "LON: "+LON;   
             
 //            var myLatLng = {lat: LAT, lng: LON};
 //            var marker = new google.maps.Marker({
@@ -231,7 +231,7 @@
 //            marker.setMap(map);
         }
         
-<!-- **************************************************************** -->
+
     
         function initAutocomplete() {
           var map = new google.maps.Map(document.getElementById('map'), {
@@ -310,55 +310,18 @@
       
     }//end of function
 
-<!-- **************************************************************** -->
+
     
-        function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          center: new google.maps.LatLng(LAT, LON),
-          mapTypeId: 'roadmap'
+    function show_midpoint() {
+        var myLatLng = {lat: LAT, lng: LON};
+//        marker.setMap(null);
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'THIS IS YOUR MIDPOINT!'
         });
-
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-        script.src = eqfeed_callback({"type":"FeatureCollection","features":[
-            {"type":"Feature","geometry":{"type":"Point","coordinates":[LON,LAT,100]},"id":"first"}]});
-    
-        document.getElementsByTagName('head')[0].appendChild(script);
-        
-        var res_adrs = [];
-        var mid_latlng = {lat: LAT, lng: LON};
-////        Calculat the residences that are qualified
-//        <% apts.forEach(function(apt){ %>
-//            var apt_adr = <%= apt.address %>;
-//            if (!apt_adr.geometry) {
-//              console.log("Returned place contains no geometry");
-//              return;
-//            }
-//            //check residences in the range r=2 miles.
-//            var distance = computeDistanceBetween(from:mid_latlng, to:apt_adr, radius?:number);
-//            if(distance <= 3218.69){    //2 miles
-//                res_adrs.push(apt_adr);
-//            }
-//                        
-//        <% }) %>
-        
     }
-
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
-        window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-        }
-      }
-<!-- **************************************************************** -->
-      
+        
     </script>
     
     
