@@ -1,4 +1,4 @@
-<!-- views/index.ejs -->
+<!-- views/signup.ejs -->
 <!DOCTYPE html>
 <!--
 Template Name: Funzi
@@ -34,7 +34,7 @@ Team Member:
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li><a href="/">Home</a></li>
-          <li class="active"><a href="/post">Post</a></li>
+          <li><a href="/post">Post</a></li>
           <li><a href="/profile">Profile</a></li>
           <li><a href="/login">Login</a></li>
           <li><a class="drop" href="#">Dropdown</a>
@@ -82,25 +82,19 @@ Team Member:
     <!-- ################################################################################################ -->
     <article class="group">
       <div class="one_half first">
-        <h6 class="heading">How to lease an apartment in your area:</h6>
-        <p>Fill in the form and hit submit. We will help you create your own leasing information and find the best matching redisent.</p>
-        <<form action="/post" method="post" enctype="multipart/form-data">
-          <div id="accout_info" class="card">
-            <h2>Leasing Information</h2>
-            <p>Select Image to Upload:</p>
-            <input type="file" name="image" size="50" accept="image/*"><br>
-            Address: <input type="text" name="address" required><br>
-            First Name: <input type="text" name="fname" required><br>
-            Last Name: <input type="text" name="lname" required><br>
-            Contact Email: <input type="text" name="email" value = <%= user.local.email %> readonly><br>
-            Contact Phone Number: <input type="text" name="phoneno" required><br>
-            Housing Info: <textarea name="hbio" rows = "5" cols = "50" class="overflow"></textarea><br>
-          </div>
-          <br>
-          <button type="submit" class="btn">Submit</button>
-        </form>
-        
+        <h6 class="heading">Housing Information</h6>
+        <div id="accout_info" class="card">
+            <form action="/more" method="post">
+              Address: <input type="text" name="address" value="<%= pinfo.address %>" readonly><br>
+              First Name: <input type="text" name="fname" value=<%= pinfo.fname %> readonly><br>
+              Last Name: <input type="text" name="lname" value=<%= pinfo.lname %> readonly><br>
+              Contact Email: <input type="text" name="email" value=<%= pinfo.email %> readonly><br>
+              Phone Number: <input type="text" name="phone" value=<%= pinfo.phoneno %> readonly><br>
+            </form>
+        </div>
       </div>
+      <br>
+      <div class="one_half"><a href="#"><img src="images/<%= pinfo.url %>" alt=""></a></div>
     </article>
     <!-- ################################################################################################ -->
     <!-- / main body -->
