@@ -221,12 +221,12 @@
             document.getElementById("demo3").innerHTML = LAT;   
             document.getElementById("demo4").innerHTML = LON;   
             
-            var myLatLng = {lat: LAT, lng: LON};
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Hello World!'
-            });
+//            var myLatLng = {lat: LAT, lng: LON};
+//            var marker = new google.maps.Marker({
+//                position: myLatLng,
+//                map: map,
+//                title: 'Hello World!'
+//            });
             
 //            marker.setMap(map);
         }
@@ -328,20 +328,20 @@
         
         var res_adrs = [];
         var mid_latlng = {lat: LAT, lng: LON};
-//        Calculat the residences that are qualified
-        <% apts.forEach(function(apt){ %>
-            var apt_adr = <%= apt.address %>;
-            if (!apt_adr.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            //check residences in the range r=2 miles.
-            var distance = computeDistanceBetween(from:mid_latlng, to:apt_adr, radius?:number);
-            if(distance <= 3218.69){    //2 miles
-                res_adrs.push(apt_adr);
-            }
-                        
-        <% }) %>
+////        Calculat the residences that are qualified
+//        <% apts.forEach(function(apt){ %>
+//            var apt_adr = <%= apt.address %>;
+//            if (!apt_adr.geometry) {
+//              console.log("Returned place contains no geometry");
+//              return;
+//            }
+//            //check residences in the range r=2 miles.
+//            var distance = computeDistanceBetween(from:mid_latlng, to:apt_adr, radius?:number);
+//            if(distance <= 3218.69){    //2 miles
+//                res_adrs.push(apt_adr);
+//            }
+//                        
+//        <% }) %>
         
     }
 
