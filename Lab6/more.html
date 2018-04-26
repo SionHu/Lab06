@@ -1,4 +1,3 @@
-<!-- views/index.ejs -->
 <!DOCTYPE html>
 <!--
 Template Name: Funzi
@@ -29,16 +28,14 @@ Team Member:
     <header id="header" class="hoc clear"> 
       <!-- ################################################################################################ -->
       <div id="logo" class="fl_left">
-        <h1><a href="/">Funzi</a></h1>
+        <h1><a href="index.html">Funzi</a></h1>
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/post">Post</a></li>
-		      <li><a href="/profile">Profile</a></li>
-          <li><a href="/account">Login</a></li>
-			
-		   
+          <li><a href="index.html">Home</a></li>
+          <li><a href="post.html">Post</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="login.html">Login</a></li>
           <li><a class="drop" href="#">Dropdown</a>
             <ul>
               <li><a href="#">Level 2</a></li>
@@ -84,12 +81,20 @@ Team Member:
     <!-- ################################################################################################ -->
     <article class="group">
       <div class="one_half first">
-        <h6 class="heading">How to find the best residence in you mind:</h6>
-        <p>Choose 3 different locations that you will visit most often during the time you living in the area.</p>
-    
-        <footer><a class="btn" href="/search">Search &raquo;</a></footer>
+        <h6 class="heading">Housing Information</h6>
+        <div id="accout_info" class="card">
+            <form action="/more" method="post">
+              Address: <textarea name="address" rows = "1" cols = "50" class="overflow" readonly></textarea><br>
+              First Name: <textarea name="fname" rows = "1" cols = "50" class="overflow" readonly></textarea><br>
+              Last Name: <textarea name="lname" rows = "1" cols = "50" class="overflow" readonly></textarea><br>
+              Contact Email: <textarea name="email" rows = "1" cols = "50" class="overflow" readonly></textarea><br>
+              Phone Number: <textarea name="phone" rows = "1" cols = "50" class="overflow" readonly></textarea><br>
+              Information: <textarea name="bio" rows = "5" cols = "50" class="overflow" readonly> djfaiosfjaoisdfjaiosdfj</textarea><br>
+            </form>
+        </div>
       </div>
-      <div class="one_half"><a class="imgover" href="#"><img src="images/map.png" alt=""></a></div>
+      <br>
+      <div class="one_half"><a href="#"><img src="images/map.png" alt=""></a></div>
     </article>
     <!-- ################################################################################################ -->
     <!-- / main body -->
@@ -102,7 +107,7 @@ Team Member:
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
     <!-- ################################################################################################ -->
-    <a>FUNZI CAN HELP YOU WITH THE BEST LIVING EXPREIENCE NEAR PURDUE AND MORE</a>
+    <a>写点什么好呢我也不知道啊那就先写在这里空着吧总感觉没有这一行的话显得不是很高端</a>
     <!-- ################################################################################################ -->
   </footer>
 </div>
