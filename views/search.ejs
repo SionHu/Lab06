@@ -283,16 +283,16 @@
             if (status == google.maps.GeocoderStatus.OK) {
                 adrs_lat = results[0].geometry.location.lat();
                 adrs_lng = results[0].geometry.location.lng();
-                alert(adrs_lat+"; "+adrs_lng);
+//                alert(adrs_lat+"; "+adrs_lng);
                 //Here we set the max radius of our search as 2 miles
                 if(getDistanceFromLatLonInKm(adrs_lat,adrs_lng, LAT, LON) < 3.22){
-                    alert('oh yeah baby');
+//                    alert('oh yeah baby');
                     houseid[j] = true;
                     console.log(j + ": true");
                     j = j + 1;
                 }
                 else{
-                    alert('Oof');
+//                    alert('Oof');
                     houseid[j] = false;
                     console.log(j + ": false");
                     j = j + 1;
@@ -300,6 +300,13 @@
             }
             });
         }
+          
+        var myLatLng = {lat: LAT, lng: LON};
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'THIS IS YOUR MIDPOINT!'
+        });
         
     }
     
@@ -334,7 +341,6 @@
           position: myLatLng,
           map: map,
           title: 'THIS IS YOUR MIDPOINT!'
-//          icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
         });
       }
         
