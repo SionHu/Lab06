@@ -19,13 +19,11 @@ Description:
 ---------
 Features:
 ---------
-  1. Filters:
-    - [] *Using three-point fix to locate and list the rank of distances of available residences.
-    - [] Renting Period
-    - [] Price Range
-    - [] Room Number
-  2. Showing all the spots of residences on the Google Map
-  3. Find roomate: Find roomates and set up communication with other people who consider the same housing but have not enough to live with.
+    - [X] *Using fix algorithm to calculate the center of up to 3 places a user chooses and return the avaible house posts in website.
+    - [X] Basic Login and Sign up, and Web Authentication for Creating Post and Profile
+    - [X] User can create post, upload their room image and information for map searching
+    - [X] Posting history and intel for users
+    - [] User can rent by month
     
 ----------------------
 Technologies Involved:
